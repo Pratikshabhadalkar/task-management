@@ -350,7 +350,6 @@ const server = http.createServer((req, res) => {
       res.end(JSON.stringify({ count: deletedCount }));
     });
 
-
     
   }//delete
   else if (path.startsWith('/tasks/') && method === 'DELETE') {
@@ -468,9 +467,7 @@ const server = http.createServer((req, res) => {
         }
         
       
-      
-      
-//completeation
+  
 else if (path.startsWith('/tasks/') && method === 'PATCH' && path.endsWith('/complete')) {
   const id = parseInt(path.split('/')[2]);
   const task = tasks.find(t => t.id === id);
@@ -491,7 +488,7 @@ else if (path.startsWith('/tasks/') && method === 'PATCH' && path.endsWith('/com
     }
   
   
-  //commneting
+  //commenting
 
   else if (path.startsWith('/tasks/') && method === 'POST' && path.endsWith('/comments')) {
     const id = parseInt(path.split('/')[2]);
@@ -513,10 +510,7 @@ else if (path.startsWith('/tasks/') && method === 'PATCH' && path.endsWith('/com
     });
 
   }
-  else if (path === '/ping' && method === 'GET') {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: 'Server is up and running!' }));
-  } else {
+  else {
     res.writeHead(404, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Endpoint not found' }));
   }
